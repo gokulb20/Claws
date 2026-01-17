@@ -1,4 +1,5 @@
 import { html, nothing } from "lit";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 
 import type { GatewayBrowserClient, GatewayHelloOk } from "./gateway";
 import type { AppViewState } from "./app-view-state";
@@ -86,7 +87,7 @@ export function renderApp(state: AppViewState) {
             title="${state.settings.navCollapsed ? "Expand sidebar" : "Collapse sidebar"}"
             aria-label="${state.settings.navCollapsed ? "Expand sidebar" : "Collapse sidebar"}"
           >
-            <span class="nav-collapse-toggle__icon">☰</span>
+            <span class="nav-collapse-toggle__icon">${unsafeHTML(`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`)}</span>
           </button>
           <div class="brand">
             <div class="brand-title">CLAWDBOT</div>
@@ -141,7 +142,7 @@ export function renderApp(state: AppViewState) {
               rel="noreferrer"
               title="Docs (opens in new tab)"
             >
-              <span class="nav-item__icon" aria-hidden="true">📚</span>
+              <span class="nav-item__icon" aria-hidden="true">${unsafeHTML(`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`)}</span>
               <span class="nav-item__text">Docs</span>
             </a>
           </div>

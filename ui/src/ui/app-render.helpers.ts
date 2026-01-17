@@ -1,4 +1,5 @@
 import { html } from "lit";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 
 import type { AppViewState } from "./app-view-state";
 import { iconForTab, pathForTab, titleForTab, type Tab } from "./navigation";
@@ -29,7 +30,7 @@ export function renderTab(state: AppViewState, tab: Tab) {
       }}
       title=${titleForTab(tab)}
     >
-      <span class="nav-item__icon" aria-hidden="true">${iconForTab(tab)}</span>
+      <span class="nav-item__icon" aria-hidden="true">${unsafeHTML(iconForTab(tab))}</span>
       <span class="nav-item__text">${titleForTab(tab)}</span>
     </a>
   `;
