@@ -3,8 +3,8 @@
   --shell-gap: 16px;
   --shell-nav-width: 220px;
   --shell-topbar-height: 56px;
-  --shell-focus-duration: 220ms;
-  --shell-focus-ease: cubic-bezier(0.2, 0.85, 0.25, 1);
+  --shell-focus-duration: 150ms;
+  --shell-focus-ease: ease-out;
   min-height: 100vh;
   display: grid;
   grid-template-columns: var(--shell-nav-width) minmax(0, 1fr);
@@ -13,7 +13,6 @@
     "topbar topbar"
     "nav content";
   gap: 0;
-  animation: dashboard-enter 0.6s ease-out;
   transition: grid-template-columns var(--shell-focus-duration) var(--shell-focus-ease);
 }
 
@@ -42,8 +41,7 @@
   padding: 0 20px;
   height: var(--shell-topbar-height);
   border-bottom: 1px solid var(--border);
-  background: var(--panel);
-  backdrop-filter: blur(18px);
+  background: var(--bg-surface);
 }
 
 .topbar-left {
@@ -120,8 +118,7 @@
   overflow-x: hidden;
   padding: 16px;
   border-right: 1px solid var(--border);
-  background: var(--panel);
-  backdrop-filter: blur(18px);
+  background: var(--bg-surface);
   transition: width var(--shell-focus-duration) var(--shell-focus-ease),
     padding var(--shell-focus-duration) var(--shell-focus-ease);
 }
@@ -245,13 +242,13 @@
   justify-content: flex-start;
   gap: 8px;
   padding: 10px 12px 10px 14px;
-  border-radius: 12px;
+  border-radius: 6px;
   border: 1px solid transparent;
   background: transparent;
   color: var(--muted);
   cursor: pointer;
   text-decoration: none;
-  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+  transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
 }
 
 .nav-item__icon {
@@ -289,13 +286,12 @@
 
 .nav-item.active {
   color: var(--text);
-  border-color: rgba(245, 159, 74, 0.45);
-  background: rgba(245, 159, 74, 0.12);
+  border-color: rgba(245, 159, 74, 0.3);
+  background: rgba(245, 159, 74, 0.08);
 }
 
 .nav-item.active::before {
   background: var(--accent);
-  box-shadow: 0 0 12px rgba(245, 159, 74, 0.4);
 }
 
 .content {

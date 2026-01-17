@@ -58,86 +58,54 @@
 .chat-avatar {
   width: 40px;
   height: 40px;
-  border-radius: 8px;
-  background: var(--panel-strong);
+  border-radius: 6px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
   display: grid;
   place-items: center;
   font-weight: 600;
   font-size: 14px;
   flex-shrink: 0;
-  align-self: flex-end; /* Align with last message in group */
-  margin-bottom: 4px; /* Optical alignment */
+  align-self: flex-end;
+  margin-bottom: 4px;
 }
 
 .chat-avatar.user {
-  background: rgba(245, 159, 74, 0.2);
-  color: rgba(245, 159, 74, 1);
+  background: rgba(245, 159, 74, 0.1);
+  border-color: rgba(245, 159, 74, 0.25);
+  color: var(--accent);
 }
 
 .chat-avatar.assistant {
-  background: rgba(52, 199, 183, 0.2);
-  color: rgba(52, 199, 183, 1);
+  background: rgba(52, 199, 183, 0.1);
+  border-color: rgba(52, 199, 183, 0.25);
+  color: var(--accent-2);
 }
 
 .chat-avatar.other {
-  background: rgba(150, 150, 150, 0.2);
-  color: rgba(150, 150, 150, 1);
+  background: var(--bg-surface);
+  color: var(--muted);
 }
 
 /* Minimal Bubble Design - dynamic width based on content */
 .chat-bubble {
   display: inline-block;
   border: 1px solid var(--border);
-  background: rgba(0, 0, 0, 0.12);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
   padding: 10px 14px;
-  box-shadow: none;
-  transition: background 150ms ease-out, border-color 150ms ease-out;
   max-width: 100%;
   word-wrap: break-word;
 }
 
-.chat-bubble:hover {
-  background: rgba(0, 0, 0, 0.18);
-}
-
-/* User bubbles have different styling */
+/* User bubbles have subtle accent tint */
 .chat-group.user .chat-bubble {
-  background: rgba(245, 159, 74, 0.15);
-  border-color: rgba(245, 159, 74, 0.3);
+  background: rgba(245, 159, 74, 0.06);
+  border-color: rgba(245, 159, 74, 0.2);
 }
 
-.chat-group.user .chat-bubble:hover {
-  background: rgba(245, 159, 74, 0.22);
-}
-
-/* Streaming animation */
+/* Streaming indicator - simple border change, no animation */
 .chat-bubble.streaming {
-  animation: pulsing-border 1.5s ease-out infinite;
-}
-
-@keyframes pulsing-border {
-  0%, 100% {
-    border-color: var(--border);
-  }
-  50% {
-    border-color: var(--accent);
-  }
-}
-
-/* Fade-in animation for new messages */
-.chat-bubble.fade-in {
-  animation: fade-in 200ms ease-out;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  border-color: var(--accent-2);
 }
 
