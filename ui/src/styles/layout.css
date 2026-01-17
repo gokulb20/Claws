@@ -5,14 +5,16 @@
   --shell-topbar-height: 56px;
   --shell-focus-duration: 220ms;
   --shell-focus-ease: cubic-bezier(0.2, 0.85, 0.25, 1);
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
   display: grid;
   grid-template-columns: var(--shell-nav-width) minmax(0, 1fr);
-  grid-template-rows: var(--shell-topbar-height) 1fr;
+  grid-template-rows: var(--shell-topbar-height) minmax(0, 1fr);
   grid-template-areas:
     "topbar topbar"
     "nav content";
   gap: 0;
+  overflow: hidden;
   animation: dashboard-enter 0.6s ease-out;
   transition: grid-template-columns var(--shell-focus-duration) var(--shell-focus-ease);
 }
@@ -332,8 +334,15 @@
   overflow-x: hidden;
 }
 
+/* Chat view: content becomes a flex container that stretches */
 .shell--chat .content {
-  /* No-op: keep chat layout consistent with other tabs */
+  overflow: hidden; /* Chat handles its own scrolling */
+}
+
+/* Make the chat card fill available space */
+.content--chat > .chat {
+  flex: 1 1 0;
+  min-height: 0;
 }
 
 .content-header {
